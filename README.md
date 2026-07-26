@@ -1,6 +1,6 @@
-# Google WAXAL ASR Challenge 🎙️
+# Google WAXAL ASR Challenge - ASR Model Fine-Tuning🎙️
 
-[![🌐 View Live Case Study](https://img.shields.io/badge/🌐_View_Live-Interactive_Case_Study-00F0FF?style=for-the-badge)](https://lucaneviani.github.io/google-waxal-asr-challenge/)
+[![🌐 View the project](https://img.shields.io/badge/🌐_View_Live-Interactive_Case_Study-00F0FF?style=for-the-badge)](https://lucaneviani.github.io/google-waxal-asr-challenge/)
 
 ## 📝 Project Overview
 This repository contains my solution for the [Zindi Google WAXAL ASR Challenge](https://zindi.africa/competitions/google-waxal-asr-challenge). The primary objective of this competition is to build a robust Automatic Speech Recognition (ASR) system capable of transcribing speech in underrepresented African languages (Luganda, Shona, and Lingala). 
