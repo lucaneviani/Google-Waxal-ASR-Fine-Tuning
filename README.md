@@ -5,26 +5,33 @@
 ## 📝 Project Overview
 This repository contains my solution for the [Zindi Google WAXAL ASR Challenge](https://zindi.africa/competitions/google-waxal-asr-challenge). The primary objective of this competition is to build a robust Automatic Speech Recognition (ASR) system capable of transcribing speech in underrepresented African languages (Luganda, Shona, and Lingala). 
 
-This project demonstrates an end-to-end Machine Learning pipeline, focusing on fine-tuning a Large Audio-Language Model (Qwen 3 1.7B) to achieve the highest possible accuracy in low-resource language environments.
+An end-to-end speech recognition project focused on fine-tuning Qwen3-ASR (1.7B parameters), an ASR model, to improve transcription performance on low-resource African languages, including Lingala, Shona, and Luganda.
+
+Developed as part of the Google Waxal ASR Challenge, the project addresses the challenge of adapting modern speech recognitioning models to languages with limited annotated data. I built a complete training pipeline covering data preprocessing, audio preparation, and model optimization, leveraging Parameter-Efficient Fine-Tuning (PEFT) with LoRA to efficiently adapt the model while reducing computational costs.
+
+The project was developed using cloud-based GPU infrastructure, enabling scalable training, experimentation, and optimization of large-scale speech recognition models.
 
 ## 🧠 Methodology & Technical Approach
 
 ### 1. Model Selection
 Instead of relying on standard text-only LLMs or older ASR architectures, this project leverages **Qwen3-ASR-1.7B**, a state-of-the-art model specifically designed for speech recognition tasks. Its native multimodal architecture makes it capable of handling acoustic variations and complex dialects.
 
-### 2. Fine-Tuning Strategy (PEFT/LoRA)
-Given the substantial size of the model and the computational constraints, I applied **Parameter-Efficient Fine-Tuning (PEFT)** using **LoRA (Low-Rank Adaptation)**. 
-- Only the essential projection matrices within the attention mechanism are updated.
-- This approach drastically reduces the VRAM required and training time, while preventing catastrophic forgetting of the model's pre-trained multilingual knowledge.
+ ### 2. Fine-Tuning Strategy (PEFT & LoRA)
+Retraining all 1.7 billion parameters of Qwen3 from scratch would require expensive supercomputer clusters. To make training
+efficient and accessible, I used **Parameter-Efficient Fine-Tuning (PEFT)** with **LoRA (Low-Rank Adaptation)**.
+- **How it works:** Instead of updating the entire network, LoRA **freezes the original model's general knowledge** and
+  attaches small, trainable adapter layers. I trained only 1.8% of the model's total weights.
+- **Why it matters:** This drastically reduces computational power and GPU memory requirements by over 80%, allowing the entire training and evaluation pipeline to run smoothly in a cloud GPU environment.
 
 ### 3. Data Processing Pipeline
-- **Audio Preprocessing:** Audio signals are dynamically resampled and normalized to match the specific input requirements of the Qwen3 audio processor.
-- **Text Normalization:** Ground-truth transcripts are rigorously cleaned (removing redundant punctuation and standardizing casing) to ensure the model focuses purely on phonetic-to-text mapping, which stabilizes the loss convergence.
+- **Audio Standardization:** Audio recordings naturally come in different durations and qualities. The pipeline automatically resamples every recording to a standardized frequency of **16,000 Hz**, which is the required acoustic standard for neural
+networks to process human speech.
+- **Text Cleaning:** The written text transcripts are cleaned by removing unnecessary punctuation and standardizing letters  to lowercase. This ensures the model focuses purely on connecting spoken sounds to written words without getting confused by grammar formatting.
 
 ### 4. Evaluation Metrics
 The model is evaluated using a combination of:
-- **WER (Word Error Rate):** To measure the overall word-level accuracy.
-- **CER (Character Error Rate):** Crucial for agglutinative African languages where single character mistakes can change the meaning of a word.
+- **Word Error Rate (WER):** Measures the percentage of complete words that were transcribed incorrectly. A lower WER means the model captures spoken sentences with higher precision.
+- **Character Error Rate (CER):** Measures spelling accuracy letter-by-letter. This is especially crucial for African languages, where words often have complex prefixes and suffixes, and even a single incorrect letter can change the entire meaning of a word.
 
 ## 📂 Repository Structure
 ```
