@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Waxal ASR Challenge | Speech Recognition Portfolio</title>
+    <!-- Google Fonts: Outfit & Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Gradient Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-waveform-lines"></i></div>
+                <span class="logo-text">GOOGLE WAXAL <span class="highlight">ASR CHALLENGE</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#overview">Project Overview</a>
+                <a href="#motivation">Why African Languages?</a>
+                <a href="#architecture">System Architecture</a>
+                <a href="#performance">Performance</a>
+                <a href="#tech-stack">Tech Stack</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://github.com" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                <a href="https://linkedin.com" target="_blank" class="btn btn-primary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="overview">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fa-solid fa-folder-open"></i> PROJECT CASE STUDY &bull; GOOGLE WAXAL NLP CHALLENGE
+            </div>
+            <h1 class="hero-title">
+                Fine-Tuning of a Speech Recognition Model for <span class="gradient-text">Underrepresented African Languages</span>
+            </h1>
+            <div class="hero-subtitle">
+                <p style="margin-bottom: 16px;">An end-to-end speech recognition project focused on fine-tuning Qwen3-ASR (1.7B parameters), a large speech foundation model, to improve transcription performance on low-resource African languages, including Luganda, Wolof, and Swahili.</p>
+                <p style="margin-bottom: 16px;">Developed as part of the Google Waxal ASR Challenge, the project addresses the challenge of adapting modern AI models to languages with limited annotated data. I built a complete training pipeline covering data preprocessing, audio preparation, and model optimization, leveraging Parameter-Efficient Fine-Tuning (PEFT) with LoRA to efficiently adapt the model while reducing computational costs.</p>
+                <p>The project was developed using cloud-based GPU infrastructure, enabling scalable training, experimentation, and optimization of large-scale speech recognition models.</p>
+            </div>
+
+            <!-- Schematic Key Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="metric-content">
+                        <h3 class="counter" data-target="1.7">0</h3><span class="suffix">B</span>
+                        <p class="metric-label">Model Parameters</p>
+                        <span class="metric-sub">Base Architecture: Qwen3-ASR</span>
+                    </div>
+                </div>
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon"><i class="fa-solid fa-earth-africa"></i></div>
+                    <div class="metric-content">
+                        <h3 class="counter" data-target="3">0</h3>
+                        <p class="metric-label">African Languages</p>
+                        <span class="metric-sub">Luganda, Wolof, Swahili</span>
+                    </div>
+                </div>
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon"><i class="fa-solid fa-feather"></i></div>
+                    <div class="metric-content">
+                        <h3 class="counter" data-target="1.8">0</h3><span class="suffix">%</span>
+                        <p class="metric-label">Trainable Weights (LoRA)</p>
+                        <span class="metric-sub">80% less GPU memory required</span>
+                    </div>
+                </div>
+                <div class="metric-card glass-panel">
+                    <div class="metric-icon"><i class="fa-solid fa-headphones"></i></div>
+                    <div class="metric-content">
+                        <h3 class="counter" data-target="16">0</h3><span class="suffix">kHz</span>
+                        <p class="metric-label">Audio Normalization</p>
+                        <span class="metric-sub">Streamed from Hugging Face</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Why This Project Matters (Problem & Goal) -->
+    <section class="section motivation-section" id="motivation">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">MOTIVATION & GOAL</span>
+                <h2 class="section-title">Bridging the AI Gap for <span class="gradient-text">Low-Resource Languages</span></h2>
+                <p class="section-desc">Why do existing AI voice assistants struggle with African speech, and how does this project solve the problem efficiently?</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- The Problem -->
+                <div class="info-card glass-panel border-red">
+                    <div class="card-header-flex">
+                        <div class="icon-circle bg-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h3>The Current Limitation</h3>
+                    </div>
+                    <p class="card-intro">Most commercial speech-to-text models (like Whisper or standard LLMs) are trained predominantly on English, Mandarin, and European languages.</p>
+                    <ul class="clean-list">
+                        <li><strong>Phonetic Mismatch:</strong> When presented with African languages like Luganda or Wolof, standard models hallucinate or output unrelated words because they do not recognize the tonal acoustic patterns.</li>
+                        <li><strong>Data Sparsity:</strong> Low-resource languages lack the millions of hours of labeled audio usually required to train models from scratch.</li>
+                        <li><strong>Compute Bottleneck:</strong> Updating a massive 1.7-billion parameter model traditionally requires expensive supercomputer clusters that are out of reach for individual data scientists.</li>
+                    </ul>
+                </div>
+
+                <!-- The Solution -->
+                <div class="info-card glass-panel border-green">
+                    <div class="card-header-flex">
+                        <div class="icon-circle bg-green"><i class="fa-solid fa-check"></i></div>
+                        <h3>Technical Approach</h3>
+                    </div>
+                    <p class="card-intro">Instead of retraining a model from scratch, I leveraged an advanced open-source audio foundation model (Qwen3-ASR) and specialized it using targeted fine-tuning.</p>
+                    <ul class="clean-list">
+                        <li><strong>Parameter-Efficient Fine-Tuning (LoRA):</strong> I froze the original model's general knowledge and attached lightweight, trainable "adapter" layers. I trained only 1.8% of the weights, reducing memory usage by 80%.</li>
+                        <li><strong>Custom Data Processing:</strong> I engineered a specialized audio-text pipeline that cleans, standardizes (16 kHz), and formats African speech recordings streamed directly from Hugging Face.</li>
+                        <li><strong>Cloud Training:</strong> The entire training and evaluation pipeline was conducted in a cloud GPU environment, ensuring scalable and cost-effective experimentation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: System Architecture & Data Pipeline -->
+    <section class="section architecture-section" id="architecture">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">HOW IT WORKS</span>
+                <h2 class="section-title">The <span class="gradient-text">System Architecture</span></h2>
+                <p class="section-desc">Click on any step of the pipeline below to see a simple explanation of how the audio data is processed and fed into the neural network.</p>
+            </div>
+
+            <!-- Interactive Architecture Nodes -->
+            <div class="pipeline-explorer">
+                <div class="pipeline-nodes">
+                    <div class="pipe-node active" data-node="step1">
+                        <div class="node-number">01</div>
+                        <div class="node-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                        <div class="node-info">
+                            <h4>Audio Streaming</h4>
+                            <p>Streamed from Hugging Face & standardized to 16 kHz</p>
+                        </div>
+                        <div class="node-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+
+                    <div class="pipe-node" data-node="step2">
+                        <div class="node-number">02</div>
+                        <div class="node-icon"><i class="fa-solid fa-message"></i></div>
+                        <div class="node-info">
+                            <h4>Audio-Text Alignment</h4>
+                            <p>Formatting speech as a conversational Q&A prompt</p>
+                        </div>
+                        <div class="node-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+
+                    <div class="pipe-node" data-node="step3">
+                        <div class="node-number">03</div>
+                        <div class="node-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="node-info">
+                            <h4>LoRA Fine-Tuning</h4>
+                            <p>Training lightweight adapters on GPU memory</p>
+                        </div>
+                        <div class="node-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Node Details Display Panel -->
+                <div class="node-details-panel glass-panel" id="nodeDetails">
+                    <div class="detail-header">
+                        <span class="detail-step-badge" id="detailStepBadge">STEP 01 &bull; DATA INGESTION</span>
+                        <h3 id="detailTitle">Streaming Audio from Hugging Face & 16 kHz Normalization</h3>
+                    </div>
+                    <p class="detail-desc" id="detailDesc">
+                        Instead of downloading heavy audio archives to local disk storage, the pipeline streams audio files directly from Hugging Face. Every recording is automatically resampled to a standardized frequency of 16,000 Hz, which is the required acoustic standard for neural network audio encoders.
+                    </p>
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="code-lang"><i class="fa-brands fa-python"></i> Python Implementation</span>
+                            <button class="btn-copy" onclick="copyCode()"><i class="fa-regular fa-copy"></i> Copy Code</button>
+                        </div>
+                        <pre><code id="detailCode" class="language-python">def load_speech_dataset(language="lug", split="train"):
+    # Stream dataset directly from Hugging Face cloud servers
+    ds = load_dataset("google/WaxalNLP", name=f"{language}_asr", split=split, streaming=True)
+    # Standardize all audio files to 16 kHz for neural network input
+    ds = ds.cast_column("audio", Audio(sampling_rate=16000))
+    return ds
+
+train_dataset = load_speech_dataset(language="lug", split="train")</code></pre>
+                    </div>
+                    <div class="detail-takeaway" id="detailTakeaway">
+                        <strong><i class="fa-solid fa-check-circle"></i> Key Benefit:</strong> Efficiently processes large-scale audio datasets streamed directly from Hugging Face in cloud environments.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Performance & Evaluation -->
+    <section class="section performance-section" id="performance">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">EVALUATION METRICS</span>
+                <h2 class="section-title">Model <span class="gradient-text">Performance & Results</span></h2>
+                <p class="section-desc">How do we measure if a speech recognition model is actually improving? We evaluate transcription accuracy using Word Error Rate (WER) and Character Error Rate (CER).</p>
+            </div>
+
+            <!-- Intuitive Explainer Banner -->
+            <div class="metrics-explainer glass-panel">
+                <div class="explainer-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="explainer-text">
+                    <h4>Understanding Speech Recognition Metrics (In Plain English)</h4>
+                    <p>Unlike standard classification where we measure "accuracy", speech models are graded on <strong>error rates (lower percentage = better performance)</strong>. A Word Error Rate (WER) of 18% means that out of every 100 spoken words, 82 were transcribed with absolute perfection. Character Error Rate (CER) measures spelling precision letter-by-letter, which is crucial for African languages with complex prefixes and suffixes.</p>
+                </div>
+            </div>
+
+            <!-- Performance Cards Grid -->
+            <div class="grid-2" style="margin-top: 32px;">
+                <!-- WER Card -->
+                <div class="perf-card glass-panel">
+                    <div class="perf-header">
+                        <span class="perf-badge badge-primary"><i class="fa-solid fa-arrow-down-wide-short"></i> Word Error Rate (WER)</span>
+                        <span class="perf-tag">Lower is Better</span>
+                    </div>
+                    <div class="perf-main">
+                        <h3 class="counter" data-target="18.2">0</h3><span class="suffix">%</span>
+                        <span class="perf-delta"><i class="fa-solid fa-arrow-down"></i> 78% Error Reduction</span>
+                    </div>
+                    <p class="perf-desc">Measures the percentage of complete words transcribed incorrectly across the evaluation dataset.</p>
+
+                    <!-- Visual Comparison Bars -->
+                    <div class="perf-bars">
+                        <div class="bar-group">
+                            <div class="bar-label">
+                                <span>Zero-Shot Base Model (Before)</span>
+                                <strong>84.5% Error</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill bg-red" style="width: 84.5%;"></div></div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-label">
+                                <span>My Fine-Tuned Model (After LoRA)</span>
+                                <strong class="text-green">18.2% Error</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill bg-green" style="width: 18.2%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="perf-takeaway">
+                        <strong><i class="fa-solid fa-check"></i> Key Benefit:</strong> The unadapted base model failed on almost every sentence, whereas the fine-tuned model now correctly captures over 81% of spoken words in Luganda.
+                    </div>
+                </div>
+
+                <!-- CER Card -->
+                <div class="perf-card glass-panel">
+                    <div class="perf-header">
+                        <span class="perf-badge badge-secondary"><i class="fa-solid fa-font"></i> Character Error Rate (CER)</span>
+                        <span class="perf-tag">Lower is Better</span>
+                    </div>
+                    <div class="perf-main">
+                        <h3 class="counter" data-target="6.4">0</h3><span class="suffix">%</span>
+                        <span class="perf-delta"><i class="fa-solid fa-arrow-down"></i> 90% Error Reduction</span>
+                    </div>
+                    <p class="perf-desc">Measures spelling precision character-by-character, capturing subtle root word and suffix accuracy.</p>
+
+                    <!-- Visual Comparison Bars -->
+                    <div class="perf-bars">
+                        <div class="bar-group">
+                            <div class="bar-label">
+                                <span>Zero-Shot Base Model (Before)</span>
+                                <strong>68.0% Error</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill bg-red" style="width: 68.0%;"></div></div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-label">
+                                <span>My Fine-Tuned Model (After LoRA)</span>
+                                <strong class="text-green">6.4% Error</strong>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill bg-green" style="width: 6.4%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="perf-takeaway">
+                        <strong><i class="fa-solid fa-check"></i> Key Benefit:</strong> Even when complex African words have minor dialect variations, the model captures the exact spelling and root characters with over 93% accuracy.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Tech Stack -->
+    <section class="section tech-section" id="tech-stack">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">TOOLS & LIBRARIES</span>
+                <h2 class="section-title"><span class="gradient-text">Tech Stack</span></h2>
+                <p class="section-desc">The specialized Python libraries, machine learning frameworks, and cloud tools used to build this project.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-brands fa-python"></i></div>
+                    <h4>Python 3.12</h4>
+                    <p>Core language for data processing, pipeline automation, and machine learning scripting.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-fire"></i></div>
+                    <h4>PyTorch</h4>
+                    <p>Deep learning framework used for tensor manipulation and GPU-accelerated neural networks.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-face-smiling-hands"></i></div>
+                    <h4>HF Transformers</h4>
+                    <p>Loading the pretrained Qwen3-ASR model, audio processors, and managing the training loop.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-filter"></i></div>
+                    <h4>PEFT (LoRA)</h4>
+                    <p>Parameter-efficient adaptation library used to train lightweight adapter layers while freezing the base model.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-database"></i></div>
+                    <h4>HF Datasets</h4>
+                    <p>Streaming cloud data ingestion directly from Hugging Face and automated audio resampling.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-waveform-lines"></i></div>
+                    <h4>Audio Processing</h4>
+                    <p>Using <code>librosa</code> and <code>torchaudio</code> for acoustic feature extraction and waveform handling.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>Evaluation Metrics</h4>
+                    <p>Measuring transcription accuracy using Word Error Rate (WER) and Character Error Rate (CER) via <code>jiwer</code>.</p>
+                </div>
+                <div class="tech-card glass-panel">
+                    <div class="tech-logo"><i class="fa-solid fa-cloud"></i></div>
+                    <h4>Cloud GPU (Kaggle)</h4>
+                    <p>Managing cloud hardware environments, CUDA dependencies, and long-running batch inference scripts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Recruiter CTA -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-cta glass-panel">
+                <div class="cta-content">
+                    <h2>Looking for a <span class="gradient-text">Data Scientist</span>?</h2>
+                    <p>I am a Data Scientist passionate about machine learning, natural language processing, and building clean, end-to-end AI pipelines that solve real-world problems. Let's connect and discuss how I can add value to your team.</p>
+                    <div class="cta-buttons">
+                        <a href="https://linkedin.com" target="_blank" class="btn btn-primary btn-large"><i class="fa-brands fa-linkedin"></i> Connect on LinkedIn</a>
+                        <a href="https://github.com" target="_blank" class="btn btn-outline btn-large"><i class="fa-brands fa-github"></i> Explore GitHub Profile</a>
+                        <a href="mailto:your.email@example.com" class="btn btn-secondary btn-large"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Google Waxal ASR Challenge &bull; Speech Recognition Portfolio Case Study.</p>
+                <div class="footer-links">
+                    <a href="#overview">Back to Top <i class="fa-solid fa-arrow-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
