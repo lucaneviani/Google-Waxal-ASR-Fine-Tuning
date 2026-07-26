@@ -5,12 +5,12 @@
 ## 📝 Project Overview
 This repository contains my solution for the [Zindi Google WAXAL ASR Challenge](https://zindi.africa/competitions/google-waxal-asr-challenge). The primary objective of this competition is to build a robust Automatic Speech Recognition (ASR) system capable of transcribing speech in underrepresented African languages (Luganda, Shona, and Lingala). 
 
-This project demonstrates an end-to-end Machine Learning pipeline, focusing on fine-tuning a Large Audio-Language Model to achieve high accuracy in low-resource language environments.
+This project demonstrates an end-to-end Machine Learning pipeline, focusing on fine-tuning a Large Audio-Language Model (Qwen 3 1.7B) to achieve the highest possible accuracy in low-resource language environments.
 
 ## 🧠 Methodology & Technical Approach
 
 ### 1. Model Selection
-Instead of relying on standard text-only LLMs or older ASR architectures, this project leverages **Qwen3-ASR-1.7B**, a state-of-the-art model specifically designed for speech recognition tasks. Its native multimodal architecture makes it exceptionally capable of handling acoustic variations and complex dialects.
+Instead of relying on standard text-only LLMs or older ASR architectures, this project leverages **Qwen3-ASR-1.7B**, a state-of-the-art model specifically designed for speech recognition tasks. Its native multimodal architecture makes it capable of handling acoustic variations and complex dialects.
 
 ### 2. Fine-Tuning Strategy (PEFT/LoRA)
 Given the substantial size of the model and the computational constraints, I applied **Parameter-Efficient Fine-Tuning (PEFT)** using **LoRA (Low-Rank Adaptation)**. 
@@ -49,6 +49,6 @@ The model is evaluated using a combination of:
 - **PyTorch**
 - **Hugging Face Ecosystem** (`transformers`, `peft`, `datasets`, `evaluate`)
 - **Librosa** (Audio Processing)
+- **Cloud Computing Environment** 
 
----
-*Created as part of the Zindi Google Waxal ASR Challenge.*
+
