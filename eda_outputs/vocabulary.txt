@@ -1,0 +1,4 @@
+Total unique characters: 91
+Characters: 
+ !"&'(),-./0123456789:;<=>?\`abcdefghijklmnopqrstuvwxyz «»×àáâçèéêìíîïñòóôùúûüþāĝķĺŋœᵑ“”⭐️
+Found numbers in transcriptions: {'6', '7', '5', '0', '4', '2', '9', '3', '1', '8'}

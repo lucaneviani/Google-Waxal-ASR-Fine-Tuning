@@ -1,0 +1,13 @@
+transformers>=4.52.0
+datasets[audio]
+peft
+trl
+jiwer
+timm
+librosa
+soundfile
+accelerate
+bitsandbytes
+huggingface_hub
+torchao
+torchcodec
