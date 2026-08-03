@@ -1,4 +1,4 @@
-# Google WAXAL ASR Challenge - ASR Model Fine-Tuning🎙️
+# Google WAXAL ASR Challenge - ASR Model Fine-Tuning 🎙️
 
 [![🌐 View the project](https://img.shields.io/badge/🌐_View_Live-Interactive_Case_Study-00F0FF?style=for-the-badge)](https://lucaneviani.github.io/Google-Waxal-ASR-Fine-Tuning/)
 
