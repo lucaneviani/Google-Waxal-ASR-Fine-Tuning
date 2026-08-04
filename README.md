@@ -39,7 +39,7 @@ The model is evaluated using a combination of:
 ├── portfolio_showcase/                   # Interactive Web Case Study & Portfolio Showcase
 ├── eda_outputs/                          # Exploratory Data Analysis visualizations
 ├── src/                                  # Modular Python scripts for data loading and inference
-├── EDA_Report.md                         # Detailed Exploratory Data Analysis report
+├── EDA_Report.md                         # Exploratory Data Analysis report
 ├── fine_tuning_qwen3.ipynb               # End-to-end Qwen3-ASR fine-tuning and inference pipeline
 ├── inference_qwen3.ipynb                 # Standalone inference and evaluation notebook
 ├── Waxal_Challenge_Starter_Code.ipynb    # Baseline competition notebook
